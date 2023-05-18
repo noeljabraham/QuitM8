@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        automaticallyImplyLeading: false, // Remove the back button
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

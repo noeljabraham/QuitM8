@@ -3,7 +3,7 @@ import 'package:quitm8/screens/welcome_screen.dart';
 import 'package:quitm8/screens/login_page.dart';
 import 'package:quitm8/screens/signup_page.dart';
 import 'package:quitm8/screens/home_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';qwe
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -28,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        backgroundColor:
+            Colors.purple, // Set the app bar background color to purple
         automaticallyImplyLeading: false, // Remove the back button
       ),
       body: Center(
@@ -36,21 +38,24 @@ class _HomeScreenState extends State<HomeScreen> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
+        selectedItemColor: Colors.purple,
+        unselectedItemColor: Colors.purple,
+        showUnselectedLabels: true,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home, color: Colors.purple),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.people, color: Colors.purple),
+            icon: Icon(Icons.people),
             label: 'Community',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb, color: Colors.purple),
+            icon: Icon(Icons.lightbulb),
             label: 'Motivation',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person, color: Colors.purple),
+            icon: Icon(Icons.person),
             label: 'Profile',
           ),
         ],

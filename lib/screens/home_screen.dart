@@ -9,12 +9,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = [
-    Text('Home Page'),
-    Text('Community Page'),
-    Text('Motivation Page'),
-    Text('Profile Page'),
+  static const List<String> _pageTitles = [
+    'Home Page',
+    'Community Page',
+    'Motivation Page',
+    'Profile Page',
   ];
 
   void _onItemTapped(int index) {
@@ -27,13 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor:
-            Colors.purple, // Set the app bar background color to purple
-        automaticallyImplyLeading: false, // Remove the back button
+        title:
+            Text(_pageTitles[_selectedIndex]), // Update the title dynamically
+        backgroundColor: Colors.purple,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: Text(
+            _pageTitles[_selectedIndex]), // Update the body content dynamically
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,

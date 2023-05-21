@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quitm8/screens/welcome_screen.dart';
 import 'package:quitm8/screens/login_page.dart';
 import 'package:quitm8/screens/signup_page.dart';
 import 'package:quitm8/screens/home_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +13,8 @@ void main() async {
 }
 
 class QuitM8App extends StatelessWidget {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +22,9 @@ class QuitM8App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: WelcomeScreen.routeName,
+      initialRoute: _auth.currentUser != null
+          ? HomeScreen.routeName
+          : WelcomeScreen.routeName,
       routes: {
         WelcomeScreen.routeName: (context) => WelcomeScreen(),
         LoginPage.routeName: (context) => LoginPage(),

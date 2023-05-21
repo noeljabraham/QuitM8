@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quitm8/screens/home_screen.dart';
 import 'package:quitm8/screens/login_page.dart';
 import 'package:quitm8/screens/signup_page.dart';
 
@@ -34,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => LoginPage()),
                       );
@@ -61,7 +63,7 @@ class WelcomeScreen extends StatelessWidget {
                   SizedBox(height: 15.0),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => SignupPage()),
                       );

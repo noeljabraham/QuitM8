@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:quitm8/screens/home_screen.dart';
-import 'package:quitm8/screens/login_page.dart';
 
 class SignupPage extends StatefulWidget {
   static const String routeName = '/signup';
@@ -22,12 +21,12 @@ class _SignupPageState extends State<SignupPage> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      // Signup successful, navigate to the home screen
+// Signup successful, navigate to the home screen
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     } catch (e) {
-      // Handle signup errors here
+// Handle signup errors here
       print('Signup error: $e');
-      // Show an error dialog or display a snackbar to the user
+// Show an error dialog or display a snackbar to the user
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -118,15 +117,6 @@ class _SignupPageState extends State<SignupPage> {
                 child: Text('Signup'),
               ),
               SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, LoginPage.routeName);
-                },
-                style: TextButton.styleFrom(
-                  primary: Colors.purple,
-                ),
-                child: Text('Already have an account? Login'),
-              ),
             ],
           ),
         ),

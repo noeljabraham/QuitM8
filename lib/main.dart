@@ -5,6 +5,7 @@ import 'package:quitm8/screens/welcome_screen.dart';
 import 'package:quitm8/screens/login_page.dart';
 import 'package:quitm8/screens/signup_page.dart';
 import 'package:quitm8/screens/home_screen.dart';
+import 'package:quitm8/screens/addiction_options_page.dart'; // Import the AddictionOptionsPage
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,8 @@ class QuitM8App extends StatelessWidget {
         LoginPage.routeName: (context) => LoginPage(),
         SignupPage.routeName: (context) => SignupPage(),
         HomeScreen.routeName: (context) => HomeScreen(),
+        AddictionOptionsPage.routeName: (context) =>
+            AddictionOptionsPage(), // Add the route for the AddictionOptionsPage
       },
     );
   }

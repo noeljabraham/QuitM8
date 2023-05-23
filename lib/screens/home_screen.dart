@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import './addiction_options_page.dart';
+import 'package:quitm8/pages/home.dart';
+import 'package:quitm8/pages/community.dart';
+import 'package:quitm8/pages/motivation.dart';
+import 'package:quitm8/pages/profile.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -10,11 +15,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  static const List<String> _pageTitles = [
-    'Home Page',
-    'Community Page',
-    'Motivation Page',
-    'Profile Page',
+  final List<Widget> _pageTitles = [
+    const Home(),
+    const Community(),
+    const Motivation(),
+    const Profile(),
   ];
 
   String addictionText = ''; // Variable to store the addiction text
@@ -38,97 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(_pageTitles[_selectedIndex]),
+          title: const Text('Home'),
           backgroundColor: Colors.purple,
           elevation: 0,
           automaticallyImplyLeading: false, // Hide the back arrow
         ),
-        body: _selectedIndex == 0
-            ? Column(
-                children: [
-                  SizedBox(height: 16),
-                  GestureDetector(
-                    onTap: () => _onPlusPressed(context),
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 16),
-                      decoration: BoxDecoration(
-                        color: Colors.purple,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      height: 100,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Stay strong and break free from addiction!',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 8),
-                          Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              color: Colors.purple[200],
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                      color: Colors.purple[100],
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    height: 150,
-                    alignment: Alignment.center,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Enter Addiction or Bad Habit:',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          addictionText, // Display the entered addiction text
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Text(_pageTitles[_selectedIndex]),
-                    ),
-                  ),
-                ],
-              )
-            : Center(
-                child: Text(_pageTitles[_selectedIndex]),
-              ),
+          body: Center(
+            child: _pageTitles.elementAt(_selectedIndex),
+          ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

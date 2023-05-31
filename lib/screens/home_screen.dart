@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import './addiction_options_page.dart';
 import 'package:quitm8/pages/home.dart';
 import 'package:quitm8/pages/community.dart';
 import 'package:quitm8/pages/motivation.dart';
 import 'package:quitm8/pages/profile.dart';
-
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -15,23 +13,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  final List<Widget> _pageTitles = [
+  final List<Widget> _pages = [
     const Home(),
-     CommunityPage(),
-    const Motivation(),
-    const Profile(),
+    CommunityPage(),
+    Motivation(),
+    Profile(),
   ];
-
-  String addictionText = ''; // Variable to store the addiction text
+  final List<String> _pageTitles = [
+    'Home',
+    'Community',
+    'Motivation',
+    'Profile',
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  void _onPlusPressed(BuildContext context) {
-    Navigator.pushReplacementNamed(context, AddictionOptionsPage.routeName);
   }
 
   @override
@@ -43,14 +41,15 @@ class _HomeScreenState extends State<HomeScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Home'),
+          title:
+              Text(_pageTitles[_selectedIndex]), // Update the title dynamically
           backgroundColor: Colors.purple,
           elevation: 0,
           automaticallyImplyLeading: false, // Hide the back arrow
         ),
-          body: Center(
-            child: _pageTitles.elementAt(_selectedIndex),
-          ),
+        body: Center(
+          child: _pages.elementAt(_selectedIndex),
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,

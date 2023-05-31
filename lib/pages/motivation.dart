@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class Motivation extends StatefulWidget {
-  const Motivation({Key? key}) : super(key: key);
+  Motivation({Key? key}) : super(key: key);
 
   @override
   State<Motivation> createState() => _MotivationState();
 }
 
 class _MotivationState extends State<Motivation> {
-  List<String> motivationalQuotes = [
+  final List<String> motivationalQuotes = [
     "Believe you can and you're halfway there. - Theodore Roosevelt",
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
@@ -29,7 +29,6 @@ class _MotivationState extends State<Motivation> {
   }
 
   String getRandomMotivationalQuote() {
-    // Get a random motivational quote
     final random = Random();
     final index = random.nextInt(motivationalQuotes.length);
     return motivationalQuotes[index];
@@ -38,18 +37,13 @@ class _MotivationState extends State<Motivation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Motivation Page'),
-        backgroundColor: Colors.blueGrey[900],
-      ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[800],
                   borderRadius: BorderRadius.circular(10.0),
@@ -77,11 +71,8 @@ class _MotivationState extends State<Motivation> {
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              flex: 3,
-              child: Container(
+              SizedBox(height: 20),
+              Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[200],
                   borderRadius: BorderRadius.circular(10.0),
@@ -144,8 +135,8 @@ class _MotivationState extends State<Motivation> {
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

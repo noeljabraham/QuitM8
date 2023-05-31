@@ -32,10 +32,84 @@ class Profile extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
+          SizedBox(height: 24),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              'General Settings',
+              style: TextStyle(
+                color: Colors.deepPurple,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.only(left: 4),
+              child: Icon(
+                Icons.star,
+                color: Colors.deepPurple,
+              ),
+            ),
+            title: Text(
+              'Go Premium',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              'Unlock all the features of the app',
+              style: TextStyle(
+                fontSize: 12,
+              ),
+            ),
+            onTap: () {
+              // Add functionality for the "Go Premium" option
+            },
+          ),
+          Divider(
+            color: Colors.grey.withOpacity(0.2),
+            thickness: 1,
+            indent: 16,
+            endIndent: 16,
+          ),
+          ListTile(
+            leading: Container(
+              padding: EdgeInsets.only(left: 4),
+              child: Icon(
+                Icons.location_on,
+                color: Colors.deepPurple,
+              ),
+            ),
+            title: Text(
+              'Location Alert',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onTap: () {
+              // Add functionality for the "Location Alert" option
+            },
+          ),
+          Divider(
+            color: Colors.grey.withOpacity(0.2),
+            thickness: 1,
+            indent: 16,
+            endIndent: 16,
+          ),
           // Add your existing code for the profile page here
           // ...
         ],
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: Profile(),
+  ));
 }

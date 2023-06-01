@@ -1,8 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool locationAlert = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load the location alert state when the widget initializes
+    loadLocationAlertState();
+  }
+
+  Future<void> loadLocationAlertState() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? alertState = prefs.getBool('locationAlert');
+    if (alertState != null) {
+      setState(() {
+        locationAlert = alertState;
+      });
+    }
+  }
+
+  Future<void> saveLocationAlertState(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('locationAlert', value);
+  }
+
+  void toggleLocationAlert(bool value) {
+    setState(() {
+      locationAlert = value;
+    });
+
+    // Save the state when the switch value changes
+    saveLocationAlertState(value);
+
+    // Handle enabling/disabling the location_alert code here
+    if (value) {
+      // Activate the location_alert code
+      // Add your code here for enabling the location_alert functionality
+      print('Location Alert enabled');
+    } else {
+      // Deactivate the location_alert code
+      // Add your code here for disabling the location_alert functionality
+      print('Location Alert disabled');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +141,12 @@ class Profile extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            trailing: CupertinoSwitch(
+              value: locationAlert,
+              onChanged: toggleLocationAlert,
+            ),
             onTap: () {
-              // Add functionality for the "Location Alert" option
+              toggleLocationAlert(!locationAlert);
             },
           ),
           Divider(

@@ -38,14 +38,18 @@ class _MotivationState extends State<Motivation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: null,
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
+      appBar: AppBar(
+        title: Text('Motivation Page'),
+        backgroundColor: Colors.blueGrey[900],
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              flex: 2,
+              child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[800],
                   borderRadius: BorderRadius.circular(10.0),
@@ -73,14 +77,17 @@ class _MotivationState extends State<Motivation> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Container(
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              flex: 3,
+              child: Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[200],
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 padding: EdgeInsets.all(20.0),
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
@@ -91,38 +98,54 @@ class _MotivationState extends State<Motivation> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    ChallengeTile(
-                      title: 'Challenge 1',
-                      description: '30-day challenge for addiction relief',
-                      color: Colors.blue,
-                      icon: 'images/download-removebg-preview.png',
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to Challenge 1 page
+                      },
+                      child: ChallengeTile(
+                        title: 'Challenge 1',
+                        description: '30-day challenge for addiction relief',
+                        color: Colors.blue,
+                      ),
                     ),
                     SizedBox(height: 10),
-                    ChallengeTile(
-                      title: 'Challenge 2',
-                      description: '30-day challenge for addiction relief',
-                      color: Colors.orange,
-                      icon: 'images/helping-removebg-preview.png',
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to Challenge 2 page
+                      },
+                      child: ChallengeTile(
+                        title: 'Challenge 2',
+                        description: '30-day challenge for addiction relief',
+                        color: Colors.orange,
+                      ),
                     ),
                     SizedBox(height: 10),
-                    ChallengeTile(
-                      title: 'Challenge 3',
-                      description: '30-day challenge for addiction relief',
-                      color: Colors.green,
-                      icon: 'images/Motivation3.png',
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to Challenge 3 page
+                      },
+                      child: ChallengeTile(
+                        title: 'Challenge 3',
+                        description: '30-day challenge for addiction relief',
+                        color: Colors.green,
+                      ),
                     ),
                     SizedBox(height: 10),
-                    ChallengeTile(
-                      title: 'Custom Challenge',
-                      description: 'Create your own 30-day challenge',
-                      color: Colors.purple,
-                      icon: 'images/Motivation5-removebg-preview.png',
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to Custom Challenge page
+                      },
+                      child: ChallengeTile(
+                        title: 'Custom Challenge',
+                        description: 'Create your own 30-day challenge',
+                        color: Colors.purple,
+                      ),
                     ),
                   ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -133,19 +156,17 @@ class ChallengeTile extends StatelessWidget {
   final String title;
   final String description;
   final Color color;
-  final String icon;
 
   const ChallengeTile({
     required this.title,
     required this.description,
     required this.color,
-    required this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.all(10.0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10.0),
@@ -153,34 +174,20 @@ class ChallengeTile extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(height: 10),
-              Text(
-                description,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
-              ),
-            ],
+          Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
-          SizedBox(height: 10),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Image.asset(
-              icon,
-              width: 150,
-              height: 150,
+          SizedBox(height: 5),
+          Text(
+            description,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.white,
             ),
           ),
         ],

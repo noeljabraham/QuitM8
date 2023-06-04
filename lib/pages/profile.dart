@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:quitm8/providers/notification_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -155,17 +156,17 @@ class _ProfileState extends State<Profile> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.symmetric(vertical: 8),
               child: CircleAvatar(
                 radius: 45,
-                backgroundColor: Colors.deepPurple[200],
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
+                backgroundColor: Colors.white,
+                child: Image.asset(
+                  'images/24.png', // Replace with the path to your profile image
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            SizedBox(height: 8),
             Text(
               'Email: ${user?.email ?? 'Unknown'}',
               textAlign: TextAlign.center,
@@ -360,8 +361,49 @@ class _ProfileState extends State<Profile> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              onTap: () {
-                // Add functionality to handle sending feedback
+              onTap: () async {
+                final Uri _emailLaunchUri = Uri(
+                  scheme: 'mailto',
+                  path: 'noeljabraham35@gmail.com',
+                );
+
+                if (await canLaunch(_emailLaunchUri.toString())) {
+                  await launch(_emailLaunchUri.toString());
+                } else {
+                  throw 'Could not launch email';
+                }
+              },
+            ),
+            Divider(
+              color: Colors.grey.withOpacity(0.2),
+              thickness: 1,
+              indent: 16,
+              endIndent: 16,
+            ),
+            ListTile(
+              leading: Container(
+                padding: EdgeInsets.only(left: 4),
+                child: Icon(
+                  Icons.lock,
+                  color: Colors.deepPurple,
+                ),
+              ),
+              title: Text(
+                'Privacy Policy',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onTap: () async {
+                final String url =
+                    'https://nteknj.blogspot.com/2023/06/policy-for-addiction-relief-app.html'; // Replace with your actual privacy policy URL
+
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch privacy policy';
+                }
               },
             ),
           ],

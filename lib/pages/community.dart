@@ -22,13 +22,10 @@ class _CommunityPageState extends State<CommunityPage> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.separated(
+            child: ListView.builder(
               itemCount: posts.length,
-              separatorBuilder: (context, index) => Divider(),
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(posts[index]),
-                );
+                return _buildMessageItem(posts[index]);
               },
             ),
           ),
@@ -37,18 +34,20 @@ class _CommunityPageState extends State<CommunityPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: TextFormField(
-                    controller: _postController,
-                    decoration: InputDecoration(
-                      hintText: 'Share Your Thoughts',
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple), // Set the line color
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.deepPurple), // Set the line color
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Colors.deepPurple),
                     ),
-                    cursorColor: Colors.deepPurple[200],
+                    child: TextFormField(
+                      controller: _postController,
+                      decoration: InputDecoration(
+                        hintText: 'Share Your Thoughts',
+                        contentPadding: const EdgeInsets.all(12.0),
+                        border: InputBorder.none,
+                      ),
+                      cursorColor: Colors.deepPurple[200],
+                    ),
                   ),
                 ),
                 IconButton(
@@ -61,6 +60,24 @@ class _CommunityPageState extends State<CommunityPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildMessageItem(String message) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.deepPurple[200],
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          message,
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

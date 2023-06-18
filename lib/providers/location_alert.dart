@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 import 'package:vibration/vibration.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocationAlert extends StatefulWidget {
@@ -82,8 +84,9 @@ class _LocationAlertState extends State<LocationAlert> {
     }
   }
 
-  void _vibrate() {
-    if (Vibration.hasVibrator()) {
+  void _vibrate() async {
+    bool? hasVibrator = await Vibration.hasVibrator();
+    if (hasVibrator == true) {
       Vibration.vibrate();
     }
   }

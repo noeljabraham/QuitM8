@@ -192,7 +192,7 @@ class _ProfileState extends State<Profile> {
                 padding: EdgeInsets.only(left: 4),
                 child: Icon(
                   Icons.star,
-                  color: Colors.deepPurple,
+                  color: Colors.deepPurple[500],
                 ),
               ),
               title: Text(

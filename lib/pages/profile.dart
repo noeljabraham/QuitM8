@@ -158,10 +158,10 @@ class _ProfileState extends State<Profile> {
             Container(
               padding: EdgeInsets.symmetric(vertical: 8),
               child: CircleAvatar(
-                radius: 45,
+                radius: 60,
                 backgroundColor: Colors.white,
                 child: Image.asset(
-                  'images/24.png', // Replace with the path to your profile image
+                  'images/7153150.png', // Replace with the path to your profile image
                   fit: BoxFit.cover,
                 ),
               ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "747041183034",
+    "project_id": "quitm8xxd",
+    "storage_bucket": "quitm8xxd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747041183034:android:2ba9b26233030047efac03",
+        "android_client_info": {
+          "package_name": "com.example.quitm8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747041183034-lgr7fnrtnh17i2cio9cgmqeeblsafhoa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxcRuZbhu0_N8hJoZzXmqN8n13Jr3j248"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747041183034-lgr7fnrtnh17i2cio9cgmqeeblsafhoa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

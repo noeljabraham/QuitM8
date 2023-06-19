@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:quitm8/Challenges/challenge1.dart';
+
+
 
 class Motivation extends StatefulWidget {
   const Motivation({Key? key}) : super(key: key);
@@ -9,6 +12,7 @@ class Motivation extends StatefulWidget {
 }
 
 class _MotivationState extends State<Motivation> {
+
   List<String> motivationalQuotes = [
     "Believe you can and you're halfway there. - Theodore Roosevelt",
     "The only way to do great work is to love what you do. - Steve Jobs",
@@ -38,18 +42,14 @@ class _MotivationState extends State<Motivation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Motivation Page'),
-        backgroundColor: Colors.blueGrey[900],
-      ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
+      appBar: null,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[800],
                   borderRadius: BorderRadius.circular(10.0),
@@ -77,11 +77,8 @@ class _MotivationState extends State<Motivation> {
                   ],
                 ),
               ),
-            ),
-            SizedBox(height: 20),
-            Expanded(
-              flex: 3,
-              child: Container(
+              SizedBox(height: 20),
+              Container(
                 decoration: BoxDecoration(
                   color: Colors.blueGrey[200],
                   borderRadius: BorderRadius.circular(10.0),
@@ -98,55 +95,80 @@ class _MotivationState extends State<Motivation> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    GestureDetector(
+                    ChallengeTile(
+                      title: 'Challenge 1',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.blue,
+                      icon: 'images/download-removebg-preview.png',
                       onTap: () {
-                        // Navigate to Challenge 1 page
-                      },
-                      child: ChallengeTile(
-                        title: 'Challenge 1',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.blue,
+                        Navigator.pushNamed(context, '/challenge1').then((
+                            route) {
+                          if (route != null) {
+                            // Handle the returned route here
+                            print('Navigated to: $route');
+                          }
+                        });
+                      }
                       ),
+                    SizedBox(height: 10),
+                    ChallengeTile(
+                      title: 'Challenge 2',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.orange,
+                      icon: 'assets/images/download.png',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Challenge1()),
+                        );
+                      },
                     ),
                     SizedBox(height: 10),
-                    GestureDetector(
+                    ChallengeTile(
+                      title: 'Challenge 3',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.green,
+                      icon: 'images/Motivation3.png',
                       onTap: () {
-                        // Navigate to Challenge 2 page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Challenge1()),
+                        );
                       },
-                      child: ChallengeTile(
-                        title: 'Challenge 2',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.orange,
-                      ),
                     ),
                     SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to Challenge 3 page
-                      },
-                      child: ChallengeTile(
-                        title: 'Challenge 3',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.green,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to Custom Challenge page
-                      },
-                      child: ChallengeTile(
-                        title: 'Custom Challenge',
-                        description: 'Create your own 30-day challenge',
-                        color: Colors.purple,
-                      ),
+                    ChallengeTile(
+                      title: 'Custom Challenge',
+                      description: 'Create your own 30-day challenge',
+                      color: Colors.purple,
+                      icon: 'images/Motivation5-removebg-preview.png', onTap:
+                        () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Challenge1()),
+                        ); },
                     ),
                   ],
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+
+class Challenge1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Challenge 1'),
+      ),
+      body: Center(
+        child: Text('This is Challenge 1'),
       ),
     );
   }
@@ -156,42 +178,64 @@ class ChallengeTile extends StatelessWidget {
   final String title;
   final String description;
   final Color color;
+  final String icon;
+  final VoidCallback onTap;
 
   const ChallengeTile({
     required this.title,
     required this.description,
     required this.color,
+    required this.icon,
+    required this.onTap,
+
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
+    return GestureDetector(
+        onTap: onTap, // Execute the onTap callback when the tile is tapped
+        child: Container(
+            padding: EdgeInsets.all(10.0),
+            decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(10.0),
+        ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                description,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
+              ),
+            ],
           ),
-          SizedBox(height: 5),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
+          SizedBox(height: 10),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Image.asset(
+              icon,
+              width: 150,
+              height: 150,
             ),
           ),
         ],
       ),
+    ),
     );
   }
 }

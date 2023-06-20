@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quitm8/Challenges/challenge2.dart';
+import 'package:quitm8/Challenges/challenge3.dart';
 import 'dart:math';
 import '../Challenges/challenge1.dart';
 
@@ -112,7 +114,7 @@ class _MotivationState extends State<Motivation> {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => ChallengeHomePage()),
+                              builder: (context) => ChallengeHomePage2()),
                         );
                       },
                     ),
@@ -125,19 +127,9 @@ class _MotivationState extends State<Motivation> {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                              builder: (context) => ChallengeHomePage()),
+                              builder: (context) => ChallengeHomePage3()),
                         );
                         // Add desired functionality for Challenge 3
-                      },
-                    ),
-                    SizedBox(height: 10),
-                    ChallengeTile(
-                      title: 'Custom Challenge',
-                      description: 'Create your own 30-day challenge',
-                      color: Colors.purple,
-                      icon: 'images/Motivation5-removebg-preview.png',
-                      onTap: () {
-                        // Add desired functionality for Custom Challenge
                       },
                     ),
                   ],

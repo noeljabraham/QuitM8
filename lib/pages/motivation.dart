@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:quitm8/Challenges/challenge2.dart';
+import 'package:quitm8/Challenges/challenge3.dart';
 import 'dart:math';
+import '../Challenges/challenge1.dart';
 
 class Motivation extends StatefulWidget {
-  Motivation({Key? key}) : super(key: key);
+  const Motivation({Key? key}) : super(key: key);
 
   @override
   State<Motivation> createState() => _MotivationState();
 }
 
 class _MotivationState extends State<Motivation> {
-  final List<String> motivationalQuotes = [
+  List<String> motivationalQuotes = [
     "Believe you can and you're halfway there. - Theodore Roosevelt",
     "The only way to do great work is to love what you do. - Steve Jobs",
     "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
@@ -37,6 +40,7 @@ class _MotivationState extends State<Motivation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: null,
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(20.0),
@@ -89,48 +93,44 @@ class _MotivationState extends State<Motivation> {
                       ),
                     ),
                     SizedBox(height: 10),
-                    GestureDetector(
+                    ChallengeTile(
+                      title: 'Challenge 1',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.blue,
+                      icon: 'images/download-removebg-preview.png',
                       onTap: () {
-                        // Navigate to Challenge 1 page
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage()),
+                        );
+                        // Add desired functionality for Challenge 1
                       },
-                      child: ChallengeTile(
-                        title: 'Challenge 1',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.blue,
-                      ),
+                    ),
+                    ChallengeTile(
+                      title: 'Challenge 2',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.orange,
+                      icon: 'images/Motivation5-removebg-preview.png',
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage2()),
+                        );
+                      },
                     ),
                     SizedBox(height: 10),
-                    GestureDetector(
+                    ChallengeTile(
+                      title: 'Challenge 3',
+                      description: '30-day challenge for addiction relief',
+                      color: Colors.green,
+                      icon: 'images/Motivation3.png',
                       onTap: () {
-                        // Navigate to Challenge 2 page
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage3()),
+                        );
+                        // Add desired functionality for Challenge 3
                       },
-                      child: ChallengeTile(
-                        title: 'Challenge 2',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.orange,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to Challenge 3 page
-                      },
-                      child: ChallengeTile(
-                        title: 'Challenge 3',
-                        description: '30-day challenge for addiction relief',
-                        color: Colors.green,
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigate to Custom Challenge page
-                      },
-                      child: ChallengeTile(
-                        title: 'Custom Challenge',
-                        description: 'Create your own 30-day challenge',
-                        color: Colors.purple,
-                      ),
                     ),
                   ],
                 ),
@@ -147,41 +147,62 @@ class ChallengeTile extends StatelessWidget {
   final String title;
   final String description;
   final Color color;
+  final String icon;
+  final VoidCallback onTap;
 
   const ChallengeTile({
     required this.title,
     required this.description,
     required this.color,
+    required this.icon,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10.0),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
-          ),
-          SizedBox(height: 5),
-          Text(
-            description,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.white,
+            SizedBox(height: 10),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Image.asset(
+                icon,
+                width: 150,
+                height: 150,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

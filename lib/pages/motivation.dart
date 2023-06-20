@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import '../Challenges/challenge1.dart';
 
 class Motivation extends StatefulWidget {
   const Motivation({Key? key}) : super(key: key);
@@ -96,17 +97,23 @@ class _MotivationState extends State<Motivation> {
                       color: Colors.blue,
                       icon: 'images/download-removebg-preview.png',
                       onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage()),
+                        );
                         // Add desired functionality for Challenge 1
                       },
                     ),
-                    SizedBox(height: 10),
                     ChallengeTile(
                       title: 'Challenge 2',
                       description: '30-day challenge for addiction relief',
                       color: Colors.orange,
                       icon: 'images/Motivation5-removebg-preview.png',
                       onTap: () {
-                        // Add desired functionality for Challenge 2
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage()),
+                        );
                       },
                     ),
                     SizedBox(height: 10),
@@ -116,6 +123,10 @@ class _MotivationState extends State<Motivation> {
                       color: Colors.green,
                       icon: 'images/Motivation3.png',
                       onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => ChallengeHomePage()),
+                        );
                         // Add desired functionality for Challenge 3
                       },
                     ),

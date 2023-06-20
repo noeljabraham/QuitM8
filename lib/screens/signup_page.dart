@@ -17,16 +17,20 @@ class _SignupPageState extends State<SignupPage> {
   Future<void> _signup() async {
     try {
       UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-// Signup successful, navigate to the home screen
+
+      // Send verification email to the user
+      await userCredential.user?.sendEmailVerification();
+
+      // Signup successful, navigate to the home screen
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     } catch (e) {
-// Handle signup errors here
+      // Handle signup errors here
       print('Signup error: $e');
-// Show an error dialog or display a snackbar to the user
+      // Show an error dialog or display a snackbar to the user
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -42,6 +46,7 @@ class _SignupPageState extends State<SignupPage> {
       );
     }
   }
+
 
   @override
   void dispose() {

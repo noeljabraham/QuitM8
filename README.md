@@ -37,8 +37,6 @@ flutter pub get
 flutter run 
 ```
 
-5. **Access the Application:** Once the server is running, open your web browser and navigate to `http://localhost:3000` to access the application locally.
-
 ### Contribution Guidelines
 
 We welcome contributions from the community to help improve and expand the Addiction Relief Application. If you'd like to contribute, please follow these guidelines:

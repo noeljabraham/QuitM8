@@ -1,6 +1,6 @@
-# quitm8
+# QuitM8
 
-A new Flutter project.
+An Addiction Relief Application
 
 ## Getting Started
 

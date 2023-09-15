@@ -1,10 +1,10 @@
-# QuitM8
+# QuitM8- Addiction Relief Application
 
-Addiction Relief Application
+## Overview
 
 The Addiction Relief Application is a mobile application designed to provide support and resources for individuals struggling with addiction. This open-source project aims to leverage technology to create a user-friendly and accessible platform that can help users on their journey to recovery.
 
-Features
+## Features
 Personalized Support: The application offers personalized support by allowing users to set goals, track their progress, and receive reminders and notifications to stay on track.
 
 Community Engagement: Users can connect with others who are going through similar experiences, share their stories, and provide mutual support. The app includes a chat feature, discussion forums, and the ability to join virtual support groups.

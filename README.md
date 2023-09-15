@@ -5,13 +5,13 @@
 The Addiction Relief Application is a mobile application designed to provide support and resources for individuals struggling with addiction. This open-source project aims to leverage technology to create a user-friendly and accessible platform that can help users on their journey to recovery.
 
 ## Features
-Personalized Support: The application offers personalized support by allowing users to set goals, track their progress, and receive reminders and notifications to stay on track.
+•Personalized Support: The application offers personalized support by allowing users to set goals, track their progress, and receive reminders and notifications to stay on track.
 
-Community Engagement: Users can connect with others who are going through similar experiences, share their stories, and provide mutual support. The app includes a chat feature, discussion forums, and the ability to join virtual support groups.
+•Community Engagement: Users can connect with others who are going through similar experiences, share their stories, and provide mutual support. The app includes a chat feature, discussion forums, and the ability to join virtual support groups.
 
-Resources and Education: The application provides a comprehensive library of resources, including articles, videos, and educational materials about addiction, recovery strategies, and coping mechanisms. Users can access this information at any time, empowering them with knowledge and tools to overcome their challenges.
+•Resources and Education: The application provides a comprehensive library of resources, including articles, videos, and educational materials about addiction, recovery strategies, and coping mechanisms. Users can access this information at any time, empowering them with knowledge and tools to overcome their challenges.
 
-Journaling and Reflection: The app allows users to maintain a personal journal, providing an outlet for self-reflection and emotional processing. Journal entries can be kept private or shared with the community for additional support and encouragement.
+•Journaling and Reflection: The app allows users to maintain a personal journal, providing an outlet for self-reflection and emotional processing. Journal entries can be kept private or shared with the community for additional support and encouragement.
 
 ### Getting Started
 

@@ -50,7 +50,7 @@ We appreciate your contributions in making the Addiction Relief Application a va
 
 ### License
 
-The Addiction Relief Application is released under the [MIT License](https://opensource.org/licenses/MIT). Please review the license file for more information.
+The Addiction Relief Application is released under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0). Please review the license file for more information.
 
 For any questions or support, feel free to open an issue in the GitHub repository.
 
